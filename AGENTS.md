@@ -3,6 +3,12 @@
 このリポジトリは [`natural-japanese`](./skills/natural-japanese/SKILL.md) という Agent Skill を配布するためのものです。
 スキル本体は `skills/natural-japanese/` にあり、`SKILL.md` と `references/`・`scripts/`・`assets/` で構成されます。
 
+## note記事と文体だけの依頼を分ける
+
+note向けの記事作成・編集では、先に `style-profile.md` と `skills/note-writing/SKILL.md` を読み、`natural-japanese` は日本語の推敲に併用してください。本文1499字などのnote用条件を、一般の文体スキルだけ読んで落とさないようにします。
+文体だけの点検を頼まれた場合は、その範囲に絞り、記事の企画や主張、出力形式を変えません。
+優先順位は、今回のユーザー指定、`style-profile.md`、note用指示、一般の文体規則の順です。
+
 ## このスキルについて
 
 仕事の日本語文書を読みやすくわかりやすく書く・直すためのスキルです。議事録・調査レポート・社内ガイド・リサーチメモ・スライド構成といったビジネス文書から、note・ブログ・エッセイまで扱います。AI臭さの除去は、このスキルの一工程として組み込まれています。
