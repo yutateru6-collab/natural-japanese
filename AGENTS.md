@@ -1,24 +1,29 @@
 # AGENTS.md
 
-このリポジトリは [`natural-japanese`](./skills/natural-japanese/SKILL.md) という Agent Skill を配布するためのものです。
-スキル本体は `skills/natural-japanese/` にあり、`SKILL.md` と `references/`・`scripts/`・`assets/` で構成されます。
+このリポジトリは [`natural-japanese`](./skills/natural-japanese/SKILL.md) を基盤に、note記事用の [`note-writing`](./skills/note-writing/SKILL.md) とX投稿用の [`x-writing`](./skills/x-writing/SKILL.md) を組み合わせて使うための Agent Skill 群です。
 
-## note記事と文体だけの依頼を分ける
+## note記事・X投稿・文体だけの依頼を分ける
 
 note向けの記事作成・編集では、先に `style-profile.md` と `skills/note-writing/SKILL.md` を読み、`natural-japanese` は日本語の推敲に併用してください。本文1499字などのnote用条件を、一般の文体スキルだけ読んで落とさないようにします。
+
+note記事の標準出力では、完成本文から `skills/x-writing/SKILL.md` を使ってX投稿案もセットで作ります。ユーザーが「X不要」「本文だけ」など範囲を限定した場合は、その指定を優先します。
+
+X投稿だけを依頼された場合は、`style-profile.md` と `skills/x-writing/SKILL.md` を先に読み、`natural-japanese` を推敲に併用してください。note記事からXへ変換する場合は単純要約ではなく、Xで一投稿として読める入口と情報量へ再構成します。
+
 文体だけの点検を頼まれた場合は、その範囲に絞り、記事の企画や主張、出力形式を変えません。
-優先順位は、今回のユーザー指定、`style-profile.md`、note用指示、一般の文体規則の順です。
 
-## このスキルについて
+優先順位は、今回のユーザー指定、`style-profile.md`、媒体別スキル（note-writing / x-writing）、一般の文体規則の順です。
 
-仕事の日本語文書を読みやすくわかりやすく書く・直すためのスキルです。議事録・調査レポート・社内ガイド・リサーチメモ・スライド構成といったビジネス文書から、note・ブログ・エッセイまで扱います。AI臭さの除去は、このスキルの一工程として組み込まれています。
+## このスキル群について
+
+仕事の日本語文書を読みやすくわかりやすく書く・直すための基盤に加え、note・ブログ・エッセイ・X投稿まで媒体別に扱います。AI臭さの除去は、このスキル群の一工程として組み込まれています。
 
 設計は二軸です。
 
 - **検出は機械、判断はAI**: 疑いの検出は `skills/natural-japanese/scripts/lint.py`（sudachipy による形態素解析）が決定的に行い、どう直すかはAIが文脈で判断する
 - **事後修正より生成時制約**: 書いた後にAI臭を消すより、書く前の設計（読者・主メッセージ・見出しスケルトン）と書くときの制約（`skills/natural-japanese/references/writing-constitution.md` の文体憲法12箇条）で発生自体を防ぐ
 
-文書タイプ別の型は `skills/natural-japanese/references/doctypes/`、詳しい工程は [`SKILL.md`](./skills/natural-japanese/SKILL.md) を参照してください。
+文書タイプ別の型は `skills/natural-japanese/references/doctypes/`、詳しい工程は各 `SKILL.md` を参照してください。
 
 ## openskills 経由で読み込む場合
 
